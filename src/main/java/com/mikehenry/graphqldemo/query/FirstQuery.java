@@ -1,4 +1,4 @@
-package com.mikehenry.graphqldemo.graphql_test;
+package com.mikehenry.graphqldemo.query;
 
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import org.springframework.stereotype.Component;
