@@ -6,6 +6,6 @@ type Query {
 }
 
 input StudentName {
-    firstName : String
+    firstName : String!
     lastName : String
 }
