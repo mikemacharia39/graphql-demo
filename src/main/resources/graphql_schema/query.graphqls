@@ -2,4 +2,10 @@ type Query {
     sampleString : String
     anotherSampleString : String
     withTwoParamsString(firstName : String, lastName : String) : String
+    getName(studentName : StudentName) : String
+}
+
+input StudentName {
+    firstName : String
+    lastName : String
 }
