@@ -13,4 +13,8 @@ public class FirstQuery implements GraphQLQueryResolver {
     public String anotherSampleString() {
         return "Another Query";
     }
+
+    public String withTwoParamsString(String firstName, String lastName) {
+        return firstName + " " + lastName;
+    }
 }

@@ -1,4 +1,5 @@
 type Query {
     sampleString : String
     anotherSampleString : String
+    withTwoParamsString(firstName : String, lastName : String) : String
 }
