@@ -34,4 +34,14 @@ public class Course {
     @NotNull
     @Column(name = "name")
     private String name;
+
+    public Course code(String code) {
+        this.code = code;
+        return this;
+    }
+
+    public Course name(String name) {
+        this.name = name;
+        return this;
+    }
 }
