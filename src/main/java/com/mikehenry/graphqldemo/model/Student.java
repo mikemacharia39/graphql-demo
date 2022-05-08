@@ -2,8 +2,8 @@ package com.mikehenry.graphqldemo.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.mikehenry.graphqldemo.common.AbstractAuditableEntity;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
@@ -17,11 +17,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter
 @Setter
-@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "student")
 @SQLDelete(sql = "UPDATE student SET deleted = 1 WHERE id = ?")
@@ -54,7 +55,7 @@ public class Student extends AbstractAuditableEntity {
     private Integer deleted = 1;
 
     @OneToMany(mappedBy = "course")
-    private Set<StudentCourse> studentCourses;
+    private Set<StudentCourse> studentCourses = new HashSet<>();
 
     public Student firstName(String firstName) {
         this.firstName = firstName;

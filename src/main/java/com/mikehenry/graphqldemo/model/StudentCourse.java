@@ -36,4 +36,9 @@ public class StudentCourse extends AbstractAuditableEntity {
 
     @Column(name = "active")
     private Integer active = 1;
+
+    public StudentCourse(Student student, Course course) {
+        this.student = student;
+        this.course = course;
+    }
 }
