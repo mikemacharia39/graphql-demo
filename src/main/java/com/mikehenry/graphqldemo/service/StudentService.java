@@ -4,7 +4,7 @@ import com.mikehenry.graphqldemo.response.StudentResponse;
 
 import java.util.List;
 
-public interface Student {
+public interface StudentService {
 
     StudentResponse getStudent(Long id);
 
