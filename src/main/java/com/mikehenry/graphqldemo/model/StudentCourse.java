@@ -24,7 +24,7 @@ public class StudentCourse extends AbstractAuditableEntity {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "student_id")

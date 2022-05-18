@@ -17,4 +17,17 @@ type StudentResponse {
     lastName : String
     dob : String
     address : String
+    studentCourses : [StudentCourse]
+}
+
+type StudentCourse {
+    id : Float
+    course : Course
+    active : Integer
+}
+
+type Course {
+    id : Float
+    code : String
+    name : String
 }
