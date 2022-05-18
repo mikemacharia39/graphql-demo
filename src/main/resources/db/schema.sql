@@ -2,7 +2,7 @@ CREATE TABLE student (
 	id BIGINT NOT NULL AUTO_INCREMENT,
     firstName VARCHAR(50) NOT NULL,
 	lastName VARCHAR(50) NOT NULL,
-    dob DATETIME(6) NOT NULL,
+    dob DATE NOT NULL,
     address VARCHAR(50) DEFAULT NULL,
     deleted TINYINT(1) DEFAULT 0,
     dateCreated DATETIME(6) DEFAULT NULL,
