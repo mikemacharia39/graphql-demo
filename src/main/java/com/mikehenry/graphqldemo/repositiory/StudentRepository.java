@@ -1,2 +1,4 @@
-package com.mikehenry.graphqldemo.repositiory;public interface StudentRepository {
+package com.mikehenry.graphqldemo.repositiory;
+
+public interface StudentRepository {
 }
