@@ -48,7 +48,7 @@ public class Student extends AbstractAuditableEntity {
     @Column(name = "deleted")
     private Integer deleted = 1;
 
-    @OneToMany(mappedBy = "course", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
     private Set<StudentCourse> studentCourses = new HashSet<>();
 
     public Student firstName(String firstName) {

@@ -23,7 +23,7 @@ type StudentResponse {
 type StudentCourse {
     id : Float
     course : Course
-    active : Integer
+    active : Int
 }
 
 type Course {

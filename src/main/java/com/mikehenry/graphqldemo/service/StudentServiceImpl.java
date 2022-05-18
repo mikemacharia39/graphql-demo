@@ -5,6 +5,7 @@ import com.mikehenry.graphqldemo.repositiory.StudentRepository;
 import com.mikehenry.graphqldemo.response.StudentResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,7 @@ public class StudentServiceImpl implements StudentService {
 
     private final StudentRepository studentRepository;
 
+    @Transactional
     @Override
     public StudentResponse getStudent(Long id) {
         Optional<Student> optionalStudent = studentRepository.findById(id);

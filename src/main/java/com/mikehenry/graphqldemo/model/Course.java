@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Getter
 @Setter
@@ -21,7 +22,7 @@ import javax.validation.constraints.NotNull;
 @Table(name = "course")
 @SQLDelete(sql = "UPDATE course SET deleted = 1 WHERE id = ?")
 @Where(clause = "deleted = 0")
-public class Course {
+public class Course implements Serializable {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
