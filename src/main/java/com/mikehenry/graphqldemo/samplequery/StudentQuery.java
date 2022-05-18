@@ -10,7 +10,8 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class StudentQuery implements GraphQLQueryResolver {
 
-    private StudentService studentService;
+    private final StudentService studentService;
+
     public StudentResponse getStudent(Long studentId) {
         return studentService.getStudent(studentId);
     }

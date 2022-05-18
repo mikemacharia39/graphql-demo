@@ -3,7 +3,7 @@ type Query {
     anotherSampleString : String
     withTwoParamsString(firstName : String, lastName : String) : String
     getName(studentName : StudentName) : String
-    getStudent(studentId : Long) StudentResponse
+    getStudent(studentId : Float) : StudentResponse
 }
 
 input StudentName {
@@ -12,9 +12,9 @@ input StudentName {
 }
 
 type StudentResponse {
-    id : Long
+    id : Float
     firstName : String
     lastName : String
-    dob : Date
+    dob : String
     address : String
 }

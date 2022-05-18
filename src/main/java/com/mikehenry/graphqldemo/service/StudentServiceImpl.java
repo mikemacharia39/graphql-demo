@@ -14,7 +14,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class StudentServiceImpl implements StudentService {
 
-    private StudentRepository studentRepository;
+    private final StudentRepository studentRepository;
 
     @Override
     public StudentResponse getStudent(Long id) {
