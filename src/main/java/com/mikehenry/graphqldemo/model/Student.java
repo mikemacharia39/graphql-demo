@@ -32,7 +32,7 @@ public class Student extends AbstractAuditableEntity {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @NotNull
     @Column(name = "firstName")
