@@ -3,9 +3,18 @@ type Query {
     anotherSampleString : String
     withTwoParamsString(firstName : String, lastName : String) : String
     getName(studentName : StudentName) : String
+    getStudent(studentId : Long) StudentResponse
 }
 
 input StudentName {
     firstName : String!
     lastName : String
+}
+
+type StudentResponse {
+    id : Long
+    firstName : String
+    lastName : String
+    dob : Date
+    address : String
 }
