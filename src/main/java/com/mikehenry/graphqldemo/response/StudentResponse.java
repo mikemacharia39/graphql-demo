@@ -6,7 +6,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,7 +18,7 @@ public class StudentResponse {
     private String lastName;
     private LocalDate dob;
     private String address;
-    private Set<StudentCourse> studentCourses;
+    private List<StudentCourse> studentCourses = new ArrayList<>();
 
     public StudentResponse(Student student) {
         this.id = student.getId();
