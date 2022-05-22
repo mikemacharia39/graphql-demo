@@ -11,8 +11,8 @@ import org.hibernate.annotations.Where;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -49,7 +49,7 @@ public class Student extends AbstractAuditableEntity {
     private Integer deleted = 1;
 
     @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
-    private Set<StudentCourse> studentCourses = new HashSet<>();
+    private List<StudentCourse> studentCourses = new ArrayList<>();
 
     public Student firstName(String firstName) {
         this.firstName = firstName;
