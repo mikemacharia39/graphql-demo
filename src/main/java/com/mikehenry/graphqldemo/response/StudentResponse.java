@@ -23,6 +23,8 @@ public class StudentResponse {
 
     private Student student;
 
+    private String fullName;
+
     public StudentResponse(Student student) {
         this.id = student.getId();
         this.firstName = student.getFirstName();
