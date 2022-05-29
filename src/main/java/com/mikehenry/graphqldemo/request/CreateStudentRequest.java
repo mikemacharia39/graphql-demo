@@ -14,5 +14,5 @@ public class CreateStudentRequest {
     private String lastName;
     private LocalDate dob;
     private String address;
-    private List<EnrolCourseRequest> studentCourses;
+    private List<EnrolCourseRequest> enrolCourses;
 }

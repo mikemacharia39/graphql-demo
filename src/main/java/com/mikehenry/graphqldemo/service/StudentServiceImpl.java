@@ -1,6 +1,9 @@
 package com.mikehenry.graphqldemo.service;
 
+import com.mikehenry.graphqldemo.model.Course;
 import com.mikehenry.graphqldemo.model.Student;
+import com.mikehenry.graphqldemo.model.StudentCourse;
+import com.mikehenry.graphqldemo.repositiory.CourseRepository;
 import com.mikehenry.graphqldemo.repositiory.StudentCourseRepository;
 import com.mikehenry.graphqldemo.repositiory.StudentRepository;
 import com.mikehenry.graphqldemo.request.CreateStudentRequest;
@@ -19,7 +22,9 @@ public class StudentServiceImpl implements StudentService {
 
     private final StudentRepository studentRepository;
     private final StudentCourseRepository studentCourseRepository;
+    private final CourseRepository courseRepository;
 
+    @Transactional
     public StudentResponse createStudent(CreateStudentRequest createStudentRequest) {
         Student student = new Student()
                 .firstName(createStudentRequest.getFirstName())
@@ -29,8 +34,17 @@ public class StudentServiceImpl implements StudentService {
 
         Student savedStudent = studentRepository.save(student);
 
+        List<StudentCourse> studentCourses = new ArrayList<>();
+        createStudentRequest.getEnrolCourses().forEach(enrolCourseRequest -> {
+            Course course = courseRepository.findByCode(enrolCourseRequest.getCourse().name());
 
+            StudentCourse studentCourse = new StudentCourse();
+            studentCourse.setStudent(savedStudent);
+            studentCourse.setCourse(course);
+        });
+        studentCourseRepository.saveAll(studentCourses);
 
+        return new StudentResponse(student);
     }
 
     @Transactional
