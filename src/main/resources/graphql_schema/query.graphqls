@@ -17,7 +17,7 @@ type StudentResponse {
     lastName : String
     dob : String
     address : String
-    studentCourses(courseNameFilter : CourseNameFilter!) : [StudentCourse]
+    studentCourses(courseNameFilter : [CourseNameFilter]) : [StudentCourse]
     fullName : String
 }
 

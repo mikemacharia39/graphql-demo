@@ -12,17 +12,17 @@ import java.util.List;
 @Service
 public class StudentResponseResolver implements GraphQLResolver<StudentResponse> {
 
-    public List<StudentCourse> getStudentCourses(StudentResponse studentResponse, CourseNameFilter courseNameFilter) {
+    public List<StudentCourse> getStudentCourses(StudentResponse studentResponse, List<CourseNameFilter> courseNameFilter) {
         List<StudentCourse> studentCourses = new ArrayList<>();
         if (!studentResponse.getStudent().getStudentCourses().isEmpty()) {
-            if (courseNameFilter.name().equalsIgnoreCase("ALL")) {
+            if (courseNameFilter.contains(CourseNameFilter.ALL)) {
                 studentCourses.addAll(studentResponse.getStudent().getStudentCourses());
             } else {
-                studentResponse.getStudent().getStudentCourses().forEach(studentCourse -> {
-                    if (courseNameFilter.name().equalsIgnoreCase(studentCourse.getCourse().getCode())) {
+                studentResponse.getStudent().getStudentCourses().forEach(studentCourse -> courseNameFilter.forEach(courseNameFilter1 -> {
+                    if (courseNameFilter1.name().equalsIgnoreCase(studentCourse.getCourse().getCode())) {
                         studentCourses.add(studentCourse);
                     }
-                });
+                }));
             }
         }
         return studentCourses;
