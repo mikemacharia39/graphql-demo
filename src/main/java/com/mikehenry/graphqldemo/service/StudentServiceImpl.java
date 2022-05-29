@@ -25,7 +25,7 @@ public class StudentServiceImpl implements StudentService {
     private final CourseRepository courseRepository;
 
     @Transactional
-    public StudentResponse createStudent(CreateStudentRequest createStudentRequest) {
+    public StudentResponse createStudent(final CreateStudentRequest createStudentRequest) {
         Student student = new Student()
                 .firstName(createStudentRequest.getFirstName())
                 .lastName(createStudentRequest.getLastName())
@@ -35,16 +35,18 @@ public class StudentServiceImpl implements StudentService {
         Student savedStudent = studentRepository.save(student);
 
         List<StudentCourse> studentCourses = new ArrayList<>();
-        createStudentRequest.getEnrolCourses().forEach(enrolCourseRequest -> {
-            Course course = courseRepository.findByCode(enrolCourseRequest.getCourse().name());
+        if (createStudentRequest.getEnrolCourses().isEmpty()) {
+            createStudentRequest.getEnrolCourses().forEach(enrolCourseRequest -> {
+                Course course = courseRepository.findByCode(enrolCourseRequest.getCourse().name());
 
-            StudentCourse studentCourse = new StudentCourse();
-            studentCourse.setStudent(savedStudent);
-            studentCourse.setCourse(course);
-        });
-        studentCourseRepository.saveAll(studentCourses);
+                StudentCourse studentCourse = new StudentCourse();
+                studentCourse.setStudent(savedStudent);
+                studentCourse.setCourse(course);
+            });
+            studentCourseRepository.saveAll(studentCourses);
+        }
 
-        return new StudentResponse(student);
+        return new StudentResponse(savedStudent);
     }
 
     @Transactional
