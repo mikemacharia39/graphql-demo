@@ -5,7 +5,9 @@ import com.mikehenry.graphqldemo.response.StudentResponse;
 import com.mikehenry.graphqldemo.service.StudentService;
 import graphql.kickstart.tools.GraphQLMutationResolver;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
+@Component
 @RequiredArgsConstructor
 public class StudentMutation implements GraphQLMutationResolver {
 

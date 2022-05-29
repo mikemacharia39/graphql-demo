@@ -1,0 +1,15 @@
+type {
+    createStudent(createStudentRequest : CreateStudentRequest) : StudentResponse
+}
+
+input CreateStudentRequest {
+    firstName : String
+    lastName : String
+    dob : String
+    address : String
+    enrolCourseRequest : [EnrolCourseRequest]
+}
+
+input EnrolCourseRequest {
+    course : CourseNameFilter
+}
