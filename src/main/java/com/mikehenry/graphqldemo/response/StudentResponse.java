@@ -18,7 +18,10 @@ public class StudentResponse {
     private String lastName;
     private LocalDate dob;
     private String address;
+
     private List<StudentCourse> studentCourses = new ArrayList<>();
+
+    private Student student;
 
     public StudentResponse(Student student) {
         this.id = student.getId();
@@ -26,8 +29,6 @@ public class StudentResponse {
         this.lastName = student.getLastName();
         this.dob = student.getDob();
         this.address = student.getAddress();
-        if (!student.getStudentCourses().isEmpty()) {
-            this.studentCourses.addAll(student.getStudentCourses());
-        }
+        this.student = student;
     }
 }
