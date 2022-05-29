@@ -1,7 +1,9 @@
 package com.mikehenry.graphqldemo.service;
 
 import com.mikehenry.graphqldemo.model.Student;
+import com.mikehenry.graphqldemo.repositiory.StudentCourseRepository;
 import com.mikehenry.graphqldemo.repositiory.StudentRepository;
+import com.mikehenry.graphqldemo.request.CreateStudentRequest;
 import com.mikehenry.graphqldemo.response.StudentResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,20 @@ import java.util.Optional;
 public class StudentServiceImpl implements StudentService {
 
     private final StudentRepository studentRepository;
+    private final StudentCourseRepository studentCourseRepository;
+
+    public StudentResponse createStudent(CreateStudentRequest createStudentRequest) {
+        Student student = new Student()
+                .firstName(createStudentRequest.getFirstName())
+                .lastName(createStudentRequest.getLastName())
+                .address(createStudentRequest.getAddress())
+                .dob(createStudentRequest.getDob());
+
+        Student savedStudent = studentRepository.save(student);
+
+
+
+    }
 
     @Transactional
     @Override
