@@ -15,7 +15,7 @@ public class StudentResponseResolver implements GraphQLResolver<StudentResponse>
     public List<StudentCourse> getStudentCourses(StudentResponse studentResponse, List<CourseNameFilter> courseNameFilter) {
         List<StudentCourse> studentCourses = new ArrayList<>();
         if (!studentResponse.getStudent().getStudentCourses().isEmpty()) {
-            if (courseNameFilter.contains(CourseNameFilter.ALL)) {
+            if (courseNameFilter == null || courseNameFilter.contains(CourseNameFilter.ALL)) {
                 studentCourses.addAll(studentResponse.getStudent().getStudentCourses());
             } else {
                 studentResponse.getStudent().getStudentCourses().forEach(studentCourse -> courseNameFilter.forEach(courseNameFilter1 -> {

@@ -1,13 +1,13 @@
-type {
+type Mutation {
     createStudent(createStudentRequest : CreateStudentRequest) : StudentResponse
 }
 
 input CreateStudentRequest {
-    firstName : String
-    lastName : String
-    dob : String
+    firstName : String!
+    lastName : String!
+    dob : String!
     address : String
-    enrolCourseRequest : [EnrolCourseRequest]
+    enrolCourses : [EnrolCourseRequest]
 }
 
 input EnrolCourseRequest {

@@ -46,7 +46,7 @@ public class Student extends AbstractAuditableEntity {
 
     @NotNull
     @Column(name = "deleted")
-    private Integer deleted = 1;
+    private Integer deleted = 0;
 
     @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
     private List<StudentCourse> studentCourses = new ArrayList<>();

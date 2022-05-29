@@ -12,6 +12,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -26,22 +28,26 @@ public class StudentServiceImpl implements StudentService {
 
     @Transactional
     public StudentResponse createStudent(final CreateStudentRequest createStudentRequest) {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate dateOfBirth = LocalDate.parse(createStudentRequest.getDob(), dateTimeFormatter);
         Student student = new Student()
                 .firstName(createStudentRequest.getFirstName())
                 .lastName(createStudentRequest.getLastName())
                 .address(createStudentRequest.getAddress())
-                .dob(createStudentRequest.getDob());
+                .dob(dateOfBirth);
 
         Student savedStudent = studentRepository.save(student);
 
         List<StudentCourse> studentCourses = new ArrayList<>();
-        if (createStudentRequest.getEnrolCourses().isEmpty()) {
+        if (!createStudentRequest.getEnrolCourses().isEmpty()) {
             createStudentRequest.getEnrolCourses().forEach(enrolCourseRequest -> {
-                Course course = courseRepository.findByCode(enrolCourseRequest.getCourse().name());
+                Course course = courseRepository.findByCode(enrolCourseRequest.getCourse().name().toUpperCase());
 
                 StudentCourse studentCourse = new StudentCourse();
                 studentCourse.setStudent(savedStudent);
                 studentCourse.setCourse(course);
+
+                studentCourses.add(studentCourse);
             });
             studentCourseRepository.saveAll(studentCourses);
         }
