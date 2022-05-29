@@ -1,10 +1,8 @@
 package com.mikehenry.graphqldemo.request;
 
-import com.mikehenry.graphqldemo.model.StudentCourse;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Getter

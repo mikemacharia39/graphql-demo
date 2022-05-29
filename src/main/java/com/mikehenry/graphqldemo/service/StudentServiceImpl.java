@@ -50,6 +50,8 @@ public class StudentServiceImpl implements StudentService {
                 studentCourses.add(studentCourse);
             });
             studentCourseRepository.saveAll(studentCourses);
+
+            savedStudent.setStudentCourses(studentCourses);
         }
 
         return new StudentResponse(savedStudent);
