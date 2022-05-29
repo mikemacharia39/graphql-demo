@@ -1,5 +1,6 @@
 package com.mikehenry.graphqldemo.resolver;
 
+import com.mikehenry.graphqldemo.filter.CourseNameFilter;
 import com.mikehenry.graphqldemo.model.StudentCourse;
 import com.mikehenry.graphqldemo.response.StudentResponse;
 import graphql.kickstart.tools.GraphQLResolver;
@@ -11,10 +12,18 @@ import java.util.List;
 @Service
 public class StudentResponseResolver implements GraphQLResolver<StudentResponse> {
 
-    public List<StudentCourse> getStudentCourses(StudentResponse studentResponse) {
+    public List<StudentCourse> getStudentCourses(StudentResponse studentResponse, CourseNameFilter courseNameFilter) {
         List<StudentCourse> studentCourses = new ArrayList<>();
         if (!studentResponse.getStudent().getStudentCourses().isEmpty()) {
-            studentCourses.addAll(studentResponse.getStudent().getStudentCourses());
+            if (courseNameFilter.name().equalsIgnoreCase("ALL")) {
+                studentCourses.addAll(studentResponse.getStudent().getStudentCourses());
+            } else {
+                studentResponse.getStudent().getStudentCourses().forEach(studentCourse -> {
+                    if (courseNameFilter.name().equalsIgnoreCase(studentCourse.getCourse().getCode())) {
+                        studentCourses.add(studentCourse);
+                    }
+                });
+            }
         }
         return studentCourses;
     }

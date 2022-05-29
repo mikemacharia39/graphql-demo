@@ -1,6 +1,7 @@
 package com.mikehenry.graphqldemo.filter;
 
 public enum CourseNameFilter {
+    ALL,
     CCC_001,
     CCC_002,
     HIV_003,
