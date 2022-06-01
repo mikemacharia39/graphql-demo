@@ -2,6 +2,23 @@
 
 Tutorial by: https://www.udemy.com/course/graphql-with-java-spring-boot-query-mutation-schema-resolver-edge-jpa/learn/lecture/27295602#overview
 
+## Getting started
+
+* The application shows how to work with graphql
+* Ensure you have installed the below applications
+
+  |Application| Version |
+  |---------|------------|
+  |JDK| \>= 8   |
+
+
+## Accessing the application
+Once you run the application, on your browser enter either \
+http://localhost:8084/altair  \
+or \
+http://localhost:8084/graphiql
+
+the 
 
 ### Query
 ````json
@@ -64,3 +81,5 @@ Variables
    "courseNameFilter":["CCC_001","HIV_003"]
 }
 ````
+
+happy coding 
